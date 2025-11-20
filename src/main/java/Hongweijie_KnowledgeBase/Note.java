@@ -1,6 +1,7 @@
 package Hongweijie_KnowledgeBase;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,15 +12,16 @@ public class Note {
     private List<String> tags;// 标签
     private String createTime;
     private String updateTime;
-
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public Note(){
         tags = new ArrayList<String>();
-        createTime = LocalDateTime.now().toString();
-        updateTime = LocalDateTime.now().toString();
+        createTime = LocalDateTime.now().format(formatter);
+        updateTime = LocalDateTime.now().format(formatter);
 
     }
 
     public Note(String title,String content,List<String> tags){
+        this();
         this.title = title;
         this.content = content;
         this.tags = tags;
@@ -31,6 +33,7 @@ public class Note {
 
     public void setId(Long id) {
         this.id = id;
+        updateTime = LocalDateTime.now().format(formatter);
     }
 
     public String getTitle() {
@@ -39,6 +42,7 @@ public class Note {
 
     public void setTitle(String title) {
         this.title = title;
+        updateTime = LocalDateTime.now().format(formatter);
     }
 
     public String getContent() {
@@ -47,6 +51,7 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content;
+        updateTime = LocalDateTime.now().format(formatter);
     }
 
     public List<String> getTags() {
@@ -55,6 +60,7 @@ public class Note {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+        updateTime = LocalDateTime.now().format(formatter);
     }
 
     public String getCreateTime() {
